@@ -1,4 +1,10 @@
+import 'package:codarkatvpn/utils/theme/widget_themes/elevated_button_theme.dart';
+import 'package:codarkatvpn/utils/theme/widget_themes/outlined_button_theme.dart';
+import 'package:codarkatvpn/utils/theme/widget_themes/text_field_theme.dart';
+import 'package:codarkatvpn/utils/theme/widget_themes/text_theme.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/color_schemes.g.dart';
 
 class CAppTheme {
   CAppTheme._();
