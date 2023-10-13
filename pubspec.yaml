@@ -44,6 +44,8 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   lottie: ^2.6.0
+  flutter_svg: ^2.0.7
+  fluttericon: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -65,30 +67,18 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/logo/codarkat-logo-android-ios.png"
+  image_path: "assets/logo/logo-launcher.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   remove_alpha_ios: true
   background_color_ios: "#ffffff"
-#  web:
-#    generate: true
-#    image_path: "assets/logo/codarkat-logo-black.png"
-#    background_color: "#hexcode"
-#    theme_color: "#hexcode"
-#  windows:
-#    generate: true
-#    image_path: "assets/logo/codarkat-logo-black.png"
-#    icon_size: 48 # min:48, max:256, default: 48
-#  macos:
-#    generate: true
-#    image_path: "assets/logo/codarkat-logo-black.png"
 
 
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/logo/codarkat-logo-text-black.png
+  image: assets/logo/logo-dark-full.png
   #  branding: assets/images/email-service.png
   color_dark: "#000000"
-  image_dark: assets/logo/codarkat-logo-text-white.png
+  image_dark: assets/logo/logo-white-full.png
   #  branding_dark: assets/images/email-service.png
 
 #  android_12:
@@ -113,6 +103,8 @@ flutter:
     - assets/images/
     - assets/logo/
     - assets/json/
+    - assets/svg/
+    - assets/fonts/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -130,7 +122,6 @@ flutter:
     - family: Averta
       fonts:
         - asset: assets/fonts/averta.ttf
-
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
