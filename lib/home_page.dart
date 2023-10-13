@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 
 import 'constants/colors.dart';
 
@@ -42,25 +43,11 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
             // crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                'Codarkat VPN',
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall
-                    ?.copyWith(color: cAppNameColor),
-              ),
-              Text(
-                'Codarkat VPN',
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall
-                    ?.copyWith(color: cAppNameColor),
-              ),
+              Lottie.asset('assets/json/earth_and_connections.json'),
+              Lottie.asset('assets/json/green_button.json'),
               Text(
                 'Your IP: 192.168.1.1',
                 textAlign: TextAlign.center,
