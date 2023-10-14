@@ -14,8 +14,36 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'constants/colors.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this);
+    _controller.addListener(() {
+      print(_controller.value);
+      //  if the full duration of the animation is 8 secs then 0.5 is 4 secs
+      if (_controller.value > 0.5) {
+      // When it gets there hold it there.
+        _controller.value = 0.5;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +87,15 @@ class HomePage extends StatelessWidget {
                 //     'assets/logo/logo-6750a4.png',
                 //   ),
                 // ),
-                Lottie.network('https://lottie.host/8ef8f7da-bc6e-4ac5-a63a-c27dcd3194aa/tiOXvkPkE9.json', ),
+                Lottie.network(
+                  'https://lottie.host/8ef8f7da-bc6e-4ac5-a63a-c27dcd3194aa/tiOXvkPkE9.json',
+                  controller: _controller,
+                  onLoaded: (composition) {
+                    _controller
+                      ..duration = composition.duration
+                      ..forward();
+                  },
+                ),
                 Transform.scale(
                   scale: 2,
                   child: Switch(
