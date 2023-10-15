@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.networkUrl(Uri.parse(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'))
+        'https://xuancanhit.dev/vid.mp4'))
       ..initialize().then((_) {
         _controller.play();
         _controller.setLooping(true);
