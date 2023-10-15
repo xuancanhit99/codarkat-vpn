@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:video_player/video_player.dart';
 
 import 'constants/colors.dart';
 
@@ -21,22 +22,20 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
+class _HomePageState extends State<HomePage> {
+  late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this);
-    _controller.addListener(() {
-      print(_controller.value);
-      //  if the full duration of the animation is 8 secs then 0.5 is 4 secs
-      if (_controller.value > 0.5) {
-      // When it gets there hold it there.
-        _controller.value = 0.5;
-      }
-    });
+    _controller = VideoPlayerController.networkUrl(Uri.parse(
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'))
+      ..initialize().then((_) {
+        _controller.play();
+        _controller.setLooping(true);
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+        setState(() {});
+      });
   }
 
   @override
@@ -87,15 +86,23 @@ class _HomePageState extends State<HomePage>
                 //     'assets/logo/logo-6750a4.png',
                 //   ),
                 // ),
-                Lottie.network(
-                  'https://lottie.host/8ef8f7da-bc6e-4ac5-a63a-c27dcd3194aa/tiOXvkPkE9.json',
-                  controller: _controller,
-                  onLoaded: (composition) {
-                    _controller
-                      ..duration = composition.duration
-                      ..forward();
-                  },
+
+                // Lottie.network(
+                //   'https://lottie.host/8ef8f7da-bc6e-4ac5-a63a-c27dcd3194aa/tiOXvkPkE9.json',
+                //   controller: _controller,
+                //   onLoaded: (composition) {
+                //     _controller
+                //       ..duration = composition.duration
+                //       ..forward();
+                //   },
+                // ),
+
+                SizedBox(
+                  width: 200,
+                  height: 200,
+                  child: VideoPlayer(_controller),
                 ),
+
                 Transform.scale(
                   scale: 2,
                   child: Switch(

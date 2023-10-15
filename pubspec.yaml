@@ -46,6 +46,7 @@ dependencies:
   lottie: ^2.6.0
   flutter_svg: ^2.0.7
   fluttericon: ^2.0.0
+  video_player: ^2.7.2
 
 dev_dependencies:
   flutter_test:
@@ -105,6 +106,7 @@ flutter:
     - assets/json/
     - assets/svg/
     - assets/fonts/
+    - assets/video/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
