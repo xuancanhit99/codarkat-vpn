@@ -1,4 +1,5 @@
 import 'package:codarkatvpn/app_preferences.dart';
+import 'package:codarkatvpn/custom_widget.dart';
 import 'package:codarkatvpn/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:restart_app/restart_app.dart';
 import 'package:video_player/video_player.dart';
 
 import 'constants/colors.dart';
@@ -28,8 +30,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(
-        'https://xuancanhit.dev/vid.mp4'))
+    _controller = VideoPlayerController.asset(AppPreferences.isDarkMode
+        ? 'assets/video/earth-vid-dark.mp4'
+        : 'assets/video/earth-vid-white.mp4')
       ..initialize().then((_) {
         _controller.play();
         _controller.setLooping(true);
@@ -64,6 +67,7 @@ class _HomePageState extends State<HomePage> {
                 AppPreferences.isDarkMode ? ThemeMode.light : ThemeMode.dark,
               );
               AppPreferences.isDarkMode = !AppPreferences.isDarkMode;
+              // Restart.restartApp();
             },
             icon: Icon(AppPreferences.isDarkMode
                 ? LineAwesomeIcons.sun
@@ -75,8 +79,6 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // SizedBox(
@@ -97,9 +99,99 @@ class _HomePageState extends State<HomePage> {
                 //   },
                 // ),
 
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomWidget(
+                      titleText: "Location",
+                      subtitleText: "FREE",
+                      roundWidgetWithIcon: CircleAvatar(
+                        radius: 32,
+                        backgroundColor: Colors.blueAccent,
+                        child: Icon(
+                          Icons.flag_circle,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    CustomWidget(
+                      titleText: "60 ms",
+                      subtitleText: "PING",
+                      roundWidgetWithIcon: CircleAvatar(
+                        radius: 32,
+                        backgroundColor: Colors.blueAccent,
+                        child: Icon(
+                          Icons.graphic_eq,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomWidget(
+                      titleText: "0 Kbps",
+                      subtitleText: "DOWNLOAD",
+                      roundWidgetWithIcon: CircleAvatar(
+                        radius: 32,
+                        backgroundColor: Colors.blueAccent,
+                        child: Icon(
+                          Icons.arrow_circle_down,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    CustomWidget(
+                      titleText: "0 Kbps",
+                      subtitleText: "UPLOAD",
+                      roundWidgetWithIcon: CircleAvatar(
+                        radius: 32,
+                        backgroundColor: Colors.blueAccent,
+                        child: Icon(
+                          Icons.arrow_circle_up,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                Column(
+                  children: [
+                    Semantics(
+                      button: true,
+                      child: InkWell(
+                        onTap: () {},
+                        borderRadius: BorderRadius.circular(100),
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            //color: Colors.blueAccent,
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              //color: Colors.blueAccent,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+
                 SizedBox(
-                  width: 200,
-                  height: 200,
+                  width: 320,
+                  height: 180,
                   child: VideoPlayer(_controller),
                 ),
 
