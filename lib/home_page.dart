@@ -31,8 +31,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.asset(AppPreferences.isDarkMode
-        ? 'assets/video/earth-vid-dark.mp4'
-        : 'assets/video/earth-vid-white.mp4')
+        ? 'assets/video/earth-dark.mp4'
+        : 'assets/video/earth-white.mp4')
       ..initialize().then((_) {
         _controller.play();
         _controller.setLooping(true);
@@ -89,111 +89,110 @@ class _HomePageState extends State<HomePage> {
                 //   ),
                 // ),
 
-                // Lottie.network(
-                //   'https://lottie.host/8ef8f7da-bc6e-4ac5-a63a-c27dcd3194aa/tiOXvkPkE9.json',
-                //   controller: _controller,
-                //   onLoaded: (composition) {
-                //     _controller
-                //       ..duration = composition.duration
-                //       ..forward();
-                //   },
+                Lottie.asset(
+                  'assets/json/earth-3.json',
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.width * 0.5,
+                  fit: BoxFit.fill,
+                  frameRate: FrameRate.max,
+                ),
+
+
+                // const Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     CustomWidget(
+                //       titleText: "Location",
+                //       subtitleText: "FREE",
+                //       roundWidgetWithIcon: CircleAvatar(
+                //         radius: 32,
+                //         backgroundColor: Colors.blueAccent,
+                //         child: Icon(
+                //           Icons.flag_circle,
+                //           color: Colors.white,
+                //           size: 30,
+                //         ),
+                //       ),
+                //     ),
+                //     CustomWidget(
+                //       titleText: "60 ms",
+                //       subtitleText: "PING",
+                //       roundWidgetWithIcon: CircleAvatar(
+                //         radius: 32,
+                //         backgroundColor: Colors.blueAccent,
+                //         child: Icon(
+                //           Icons.graphic_eq,
+                //           color: Colors.white,
+                //           size: 30,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                //
+                // const Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     CustomWidget(
+                //       titleText: "0 Kbps",
+                //       subtitleText: "DOWNLOAD",
+                //       roundWidgetWithIcon: CircleAvatar(
+                //         radius: 32,
+                //         backgroundColor: Colors.blueAccent,
+                //         child: Icon(
+                //           Icons.arrow_circle_down,
+                //           color: Colors.white,
+                //           size: 30,
+                //         ),
+                //       ),
+                //     ),
+                //     CustomWidget(
+                //       titleText: "0 Kbps",
+                //       subtitleText: "UPLOAD",
+                //       roundWidgetWithIcon: CircleAvatar(
+                //         radius: 32,
+                //         backgroundColor: Colors.blueAccent,
+                //         child: Icon(
+                //           Icons.arrow_circle_up,
+                //           color: Colors.white,
+                //           size: 30,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                //
+                // Column(
+                //   children: [
+                //     Semantics(
+                //       button: true,
+                //       child: InkWell(
+                //         onTap: () {},
+                //         borderRadius: BorderRadius.circular(100),
+                //         child: Container(
+                //           padding: EdgeInsets.all(10),
+                //           decoration: BoxDecoration(
+                //             shape: BoxShape.circle,
+                //             //color: Colors.blueAccent,
+                //           ),
+                //           child: Container(
+                //             padding: EdgeInsets.all(10),
+                //             decoration: BoxDecoration(
+                //               shape: BoxShape.circle,
+                //               //color: Colors.blueAccent,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     )
+                //   ],
                 // ),
 
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomWidget(
-                      titleText: "Location",
-                      subtitleText: "FREE",
-                      roundWidgetWithIcon: CircleAvatar(
-                        radius: 32,
-                        backgroundColor: Colors.blueAccent,
-                        child: Icon(
-                          Icons.flag_circle,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    CustomWidget(
-                      titleText: "60 ms",
-                      subtitleText: "PING",
-                      roundWidgetWithIcon: CircleAvatar(
-                        radius: 32,
-                        backgroundColor: Colors.blueAccent,
-                        child: Icon(
-                          Icons.graphic_eq,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomWidget(
-                      titleText: "0 Kbps",
-                      subtitleText: "DOWNLOAD",
-                      roundWidgetWithIcon: CircleAvatar(
-                        radius: 32,
-                        backgroundColor: Colors.blueAccent,
-                        child: Icon(
-                          Icons.arrow_circle_down,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    CustomWidget(
-                      titleText: "0 Kbps",
-                      subtitleText: "UPLOAD",
-                      roundWidgetWithIcon: CircleAvatar(
-                        radius: 32,
-                        backgroundColor: Colors.blueAccent,
-                        child: Icon(
-                          Icons.arrow_circle_up,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                Column(
-                  children: [
-                    Semantics(
-                      button: true,
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(100),
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            //color: Colors.blueAccent,
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              //color: Colors.blueAccent,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-
-                SizedBox(
-                  width: 320,
-                  height: 180,
-                  child: VideoPlayer(_controller),
-                ),
+                // SizedBox(
+                //   width: 320,
+                //   height: 180,
+                //   child: VideoPlayer(_controller),
+                // ),
 
                 Transform.scale(
                   scale: 2,
